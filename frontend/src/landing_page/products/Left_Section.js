@@ -1,43 +1,43 @@
 import React from "react";
 
-function Left_Section({
+function LeftSection({
   imageURL,
   productName,
-  productDescription,
+  productDescripton,
   tryDemo,
   learnMore,
   googlePlay,
   appStore,
 }) {
   return (
-    <div className="container p-5">
+    <div className="container mt-5">
       <div className="row align-items-center">
+        {/* মোবাইলে সম্পূর্ণ প্রস্থ (col-12) এবং ডেস্কটপে অর্ধেক (col-md-6) */}
         <div className="col-12 col-md-6 text-center mb-4 mb-md-0">
           <img src={imageURL} alt={productName} className="img-fluid" />
         </div>
 
-        <div className="col-12 col-md-6 p-3 p-md-5 text-center text-md-start ">
-          <h1>{productName}</h1>
-          <p className="text-muted">{productDescription}</p>
+        {/* মোবাইলে সেন্টারে এবং ডেস্কটপে বাঁয়ে এলাইনমেন্ট */}
+        <div className="col-12 col-md-6 p-3 p-md-5 text-center text-md-start">
+          <h1 className="fs-2 mb-3">{productName}</h1>
+          <p className="text-muted fs-6 mb-4">{productDescripton}</p>
 
-          <div className="mb-3">
+          <div className="d-flex flex-wrap justify-content-center justify-content-md-start gap-4">
             <a href={tryDemo} style={{ textDecoration: "none" }}>
-              try Demo{" "}
-              <i class="fa fa-long-arrow-right" aria-hidden="true"></i>{" "}
+              Try Demo{" "}
+              <i className="fa fa-long-arrow-right" aria-hidden="true"></i>
             </a>
-            <a
-              href={learnMore}
-              style={{ marginLeft: "20%", textDecoration: "none" }}
-            >
+            <a href={learnMore} style={{ textDecoration: "none" }}>
               Learn More{" "}
-              <i class="fa fa-long-arrow-right" aria-hidden="true"></i>{" "}
+              <i className="fa fa-long-arrow-right" aria-hidden="true"></i>
             </a>
           </div>
-          <div className="mt-4">
+
+          <div className="mt-4 d-flex justify-content-center justify-content-md-start gap-3">
             <a href={googlePlay}>
               <img src="media/images/googlePlayBadge.svg" alt="Google Play" />
             </a>
-            <a href={appStore} style={{ marginLeft: "15px" }}>
+            <a href={appStore}>
               <img src="media/images/appstoreBadge.svg" alt="App Store" />
             </a>
           </div>
@@ -47,4 +47,4 @@ function Left_Section({
   );
 }
 
-export default Left_Section;
+export default LeftSection;

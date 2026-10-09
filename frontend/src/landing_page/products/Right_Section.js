@@ -1,38 +1,3 @@
-// import React from "react";
-
-// function Right_Section({
-//   imageURL,
-//   productName,
-//   productDescription,
-//   learnMore,
-//   KiteConnect,
-// }) {
-//   return (
-//     <div className="container mt-5">
-//       <div className="row align-items-center">
-//         <div className="col-12 col-md-6 p-3 p-md-5 order-2 order-md-1 text-center text-md-start">
-//           <h1>{productName}</h1>
-//           <p>{productDescription}</p>
-
-//           <div className="mb-3">
-//             <a href={learnMore} style={{ textDecoration: "none" }}>
-//               Learn More{" "}
-//               <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
-//             </a>
-//           </div>
-//         </div>
-
-//         <div className="col-12 col-md-6 text-center mb-4 mb-md-0 order-1 order-md-2">
-//           <img src={imageURL} alt={productName} className="img-fluid" />
-//         </div>
-//       </div>
-//     </div>
-//   );
-// }
-// export default Right_Section;
-
-
-
 import React from "react";
 
 function RightSection({
@@ -45,7 +10,7 @@ function RightSection({
   return (
     <div className="container mt-5">
       <div className="row align-items-center">
-        {/* মোবাইলে টেক্সট নিচে (order-2) এবং ডেস্কটপে বাঁয়ে (order-md-1) থাকবে */}
+        {/* মোবাইলে টেক্সট নিচে (order-2) এবং ডেস্কটপে বাঁয়ে (order-md-1) */}
         <div className="col-12 col-md-6 p-3 p-md-5 order-2 order-md-1 text-center text-md-start">
           <h1 className="fs-2 mb-3">{productName}</h1>
           <p className="text-muted fs-6 mb-4">{productDescription}</p>
@@ -66,7 +31,7 @@ function RightSection({
           </div>
         </div>
 
-        {/* মোবাইলে ছবি উপরে (order-1) এবং ডেস্কটপে ডানে (order-md-2) থাকবে */}
+        {/* মোবাইলে ছবি উপরে (order-1) এবং ডেস্কটপে ডানে (order-md-2) */}
         <div className="col-12 col-md-6 text-center mb-4 mb-md-0 order-1 order-md-2">
           <img src={imageURL} alt={productName} className="img-fluid" />
         </div>

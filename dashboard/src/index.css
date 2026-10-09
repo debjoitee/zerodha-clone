@@ -18,8 +18,8 @@ code {
   display: flex;
   box-sizing: border-box;
 }
-/* for mobile view */  
-  @media (max-width: 768px) {
+
+@media (max-width: 768px) {
   .dashboard-container {
     flex-direction: column !important;
     height: auto !important;
