@@ -18,13 +18,22 @@ function Hero() {
           crypto, all in one place.
         </p>
 
-        <Link
+        {/* <Link
           to="/signup"
           className="btn btn-primary fs-5 mb-5 mt-4"
           style={{ width: "20%", margin: "0 auto", display: "block" }}
         >
           Sign up for free
+        </Link> */}
+
+        <Link
+          to="/signup"
+          className="btn btn-primary fs-5 mb-5 mt-4 w-75 w-md-25"
+          style={{ maxWidth: "260px", margin: "0 auto", display: "block" }}
+        >
+          Sign up for free
         </Link>
+        
       </div>
     </div>
   );
