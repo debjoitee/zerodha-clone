@@ -4,7 +4,10 @@ import { Link } from "react-router-dom";
 function Navbar() {
   return (
     <div className="container sticky-top ">
-      <nav className="navbar navbar-expand-lg bg-white border-bottom ">
+      <nav
+        className="navbar navbar-expand-lg navbar-light bg-white border-bottom sticky-top "
+        style={{ zIndex: 1000 }}
+      >
         <div className="container-fluid">
           <Link className="navbar-brand" to="/">
             <img
