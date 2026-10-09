@@ -1,33 +1,78 @@
-import React from 'react';
+// import React from "react";
 
-function Right_Section({
+// function Right_Section({
+//   imageURL,
+//   productName,
+//   productDescription,
+//   learnMore,
+//   KiteConnect,
+// }) {
+//   return (
+//     <div className="container mt-5">
+//       <div className="row align-items-center">
+//         <div className="col-12 col-md-6 p-3 p-md-5 order-2 order-md-1 text-center text-md-start">
+//           <h1>{productName}</h1>
+//           <p>{productDescription}</p>
+
+//           <div className="mb-3">
+//             <a href={learnMore} style={{ textDecoration: "none" }}>
+//               Learn More{" "}
+//               <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
+//             </a>
+//           </div>
+//         </div>
+
+//         <div className="col-12 col-md-6 text-center mb-4 mb-md-0 order-1 order-md-2">
+//           <img src={imageURL} alt={productName} className="img-fluid" />
+//         </div>
+//       </div>
+//     </div>
+//   );
+// }
+// export default Right_Section;
+
+
+
+import React from "react";
+
+function RightSection({
   imageURL,
   productName,
   productDescription,
   learnMore,
-  KiteConnect,
-
+  kiteConnect,
 }) {
   return (
     <div className="container mt-5">
-      <div className="row">
-        <div className="col-6 p-5 mt-5 ">
-          <h1>{productName}</h1>
-          <p>{productDescription}</p>
+      <div className="row align-items-center">
+        {/* মোবাইলে টেক্সট নিচে (order-2) এবং ডেস্কটপে বাঁয়ে (order-md-1) থাকবে */}
+        <div className="col-12 col-md-6 p-3 p-md-5 order-2 order-md-1 text-center text-md-start">
+          <h1 className="fs-2 mb-3">{productName}</h1>
+          <p className="text-muted fs-6 mb-4">{productDescription}</p>
 
-          <div className="mb-3">
-            <a href={learnMore} style={{ marginLeft: "0%", textDecoration: "none" }}>
-              Learn More {" "}
-              <i class="fa fa-long-arrow-right" aria-hidden="true" ></i>
-            </a>
+          <div className="d-flex flex-wrap justify-content-center justify-content-md-start gap-4">
+            {learnMore && (
+              <a href={learnMore} style={{ textDecoration: "none" }}>
+                Learn More{" "}
+                <i className="fa fa-long-arrow-right" aria-hidden="true"></i>
+              </a>
+            )}
+            {kiteConnect && (
+              <a href={kiteConnect} style={{ textDecoration: "none" }}>
+                Kite Connect{" "}
+                <i className="fa fa-long-arrow-right" aria-hidden="true"></i>
+              </a>
+            )}
           </div>
-
         </div>
 
-        <div className="col-6 p-5 ">
-          <img src={imageURL} /></div>
+        {/* মোবাইলে ছবি উপরে (order-1) এবং ডেস্কটপে ডানে (order-md-2) থাকবে */}
+        <div className="col-12 col-md-6 text-center mb-4 mb-md-0 order-1 order-md-2">
+          <img src={imageURL} alt={productName} className="img-fluid" />
+        </div>
       </div>
     </div>
   );
 }
-export default Right_Section;
+
+export default RightSection;
