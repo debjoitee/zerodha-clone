@@ -36,19 +36,28 @@ function LoginForm() {
   // };
 
   const handleSubmit = async (e) => {
-  e.preventDefault();
-  try {
-    const { data } = await axios.post(`${API_URL}/login`, inputValue);
+    e.preventDefault();
+    setMessage("");
 
-    if (data.success) {
-      window.location.href = `${DASHBOARD_URL}/?token=${data.token}`;
-    } else {
-      setMessage(data.message);
+    try {
+      // API_URL শেষে স্ল্যাশ থাকলে তা সরিয়ে নেওয়া
+      const baseUrl = (API_URL || "").replace(/\/$/, "");
+      const { data } = await axios.post(`${baseUrl}/login`, inputValue);
+
+      if (data.success && data.token) {
+        // ড্যাশবোর্ড লিঙ্ক ফরম্যাট ঠিক করা
+        const dashUrl = (DASHBOARD_URL || "https://zerodha-dashboard-app.netlify.app").replace(/\/$/, "");
+        window.location.href = `${dashUrl}?token=${data.token}`;
+      } else {
+        setMessage(data.message || "Login failed. Please check credentials.");
+      }
+    } catch (error) {
+      console.error("Login API Error:", error.response || error);
+      setMessage(
+        error.response?.data?.message || "Something went wrong. Please try again."
+      );
     }
-  } catch (error) {
-    setMessage("Something went wrong. Please try again.");
-  }
-};
+  };
 
   return (
     <div className="container my-5" style={{ maxWidth: "420px" }}>
