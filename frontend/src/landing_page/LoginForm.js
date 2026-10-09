@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import { API_URL, DASHBOARD_URL } from "../config";
 
 function LoginForm() {
   const [inputValue, setInputValue] = useState({
@@ -15,24 +16,39 @@ function LoginForm() {
     setInputValue({ ...inputValue, [name]: value });
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      const { data } = await axios.post(
-        "http://localhost:3002/login",
-        inputValue,
-        { withCredentials: true }
-      );
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+  //   try {
+  //     const { data } = await axios.post(
+  //       `axios.get(`${API_URL}/login`)`,
+  //       inputValue,
+  //       { withCredentials: true }
+  //     );
 
-      if (data.success) {
-        window.location.href = "http://localhost:3001";
-      } else {
-        setMessage(data.message);
-      }
-    } catch (error) {
-      setMessage("Something went wrong. Please try again.");
+  //     if (data.success) {
+  //       window.location.href = "http://localhost:3001";
+  //     } else {
+  //       setMessage(data.message);
+  //     }
+  //   } catch (error) {
+  //     setMessage("Something went wrong. Please try again.");
+  //   }
+  // };
+
+  const handleSubmit = async (e) => {
+  e.preventDefault();
+  try {
+    const { data } = await axios.post(`${API_URL}/login`, inputValue);
+
+    if (data.success) {
+      window.location.href = `${DASHBOARD_URL}/?token=${data.token}`;
+    } else {
+      setMessage(data.message);
     }
-  };
+  } catch (error) {
+    setMessage("Something went wrong. Please try again.");
+  }
+};
 
   return (
     <div className="container my-5" style={{ maxWidth: "420px" }}>

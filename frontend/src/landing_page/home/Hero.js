@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 function Hero() {
   return (
@@ -17,12 +18,13 @@ function Hero() {
           crypto, all in one place.
         </p>
 
-        <button
+        <Link
+          to="/signup"
           className="btn btn-primary fs-5 mb-5 mt-4"
-          style={{ width: "20%", margin: "0 auto" }}
+          style={{ width: "20%", margin: "0 auto", display: "block" }}
         >
-          Sign up for free{" "}
-        </button>
+          Sign up for free
+        </Link>
       </div>
     </div>
   );

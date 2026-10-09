@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import { VerticalGraph } from "./VerticalGraph";
-
+import { API_URL } from "../config";
 import GeneralContext from "./GeneralContext";
 
 const Holdings = () => {
@@ -9,7 +9,7 @@ const Holdings = () => {
   const generalContext = useContext(GeneralContext);
 
   useEffect(() => {
-    axios.get("http://localhost:3002/allHoldings").then((res) => {
+    axios.get(`${API_URL}/allHoldings`).then((res) => {
       setAllHoldings(res.data);
     });
   }, []);

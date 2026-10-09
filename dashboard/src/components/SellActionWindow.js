@@ -3,7 +3,8 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 
 import GeneralContext from "./GeneralContext";
-import "./BuyActionWindow.css"; 
+import { API_URL } from "../config";
+import "./BuyActionWindow.css";
 
 const SellActionWindow = ({ uid }) => {
   const generalContext = useContext(GeneralContext);
@@ -12,7 +13,7 @@ const SellActionWindow = ({ uid }) => {
   const [stockPrice, setStockPrice] = useState(0.0);
 
   const handleSellClick = () => {
-    axios.post("http://localhost:3002/newOrder", {
+    axios.post(`${API_URL}/newOrder`, {
       name: uid,
       qty: stockQuantity,
       price: stockPrice,

@@ -2,15 +2,20 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 import { Link } from "react-router-dom";
+import { API_URL, LANDING_URL } from "../config";
 
 const Menu = () => {
   const [selectedMenu, setSelectedMenu] = useState(0);
   const [isProfileDropdownOpen, setIsProfileDropdownOpen] = useState(false);
   const [username, setUsername] = useState("");
 
+
   useEffect(() => {
+    const token = localStorage.getItem("token");
     axios
-      .get("http://localhost:3002/verify", { withCredentials: true })
+      .get(`${API_URL}/verify`, {
+        headers: { Authorization: `Bearer ${token}` },
+      })
       .then((res) => {
         if (res.data.status) {
           setUsername(res.data.user);
@@ -26,13 +31,10 @@ const Menu = () => {
     setIsProfileDropdownOpen(!isProfileDropdownOpen);
   };
 
-  const handleLogout = async () => {
-    await axios.post(
-      "http://localhost:3002/logout",
-      {},
-      { withCredentials: true }
-    );
-    window.location.href = "http://localhost:3000/login";
+  // Logout function 
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    window.location.href = `${LANDING_URL}/login`;
   };
 
   const menuClass = "menu";
@@ -120,7 +122,10 @@ const Menu = () => {
 
         {isProfileDropdownOpen && (
           <div style={{ marginLeft: "10px" }}>
-            <button className="btn btn-sm btn-outline-danger" onClick={handleLogout}>
+            <button
+              className="btn btn-sm btn-outline-danger"
+              onClick={handleLogout}
+            >
               Logout
             </button>
           </div>
