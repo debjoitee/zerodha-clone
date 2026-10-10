@@ -10,7 +10,7 @@ function LoginForm() {
   });
   const [message, setMessage] = useState("");
   const [showPassword, setShowPassword] = useState(false);
-
+  const [loading, setLoading] = useState(false);
   const handleChange = (e) => {
     const { name, value } = e.target;
     setInputValue({ ...inputValue, [name]: value });
@@ -46,7 +46,9 @@ function LoginForm() {
 
       if (data.success && data.token) {
         // ড্যাশবোর্ড লিঙ্ক ফরম্যাট ঠিক করা
-        const dashUrl = (DASHBOARD_URL || "https://zerodha-dashboard-app.netlify.app").replace(/\/$/, "");
+        const dashUrl = (
+          DASHBOARD_URL || "https://zerodha-dashboard-app.netlify.app"
+        ).replace(/\/$/, "");
         window.location.href = `${dashUrl}?token=${data.token}`;
       } else {
         setMessage(data.message || "Login failed. Please check credentials.");
@@ -54,7 +56,8 @@ function LoginForm() {
     } catch (error) {
       console.error("Login API Error:", error.response || error);
       setMessage(
-        error.response?.data?.message || "Something went wrong. Please try again."
+        error.response?.data?.message ||
+          "Something went wrong. Please try again.",
       );
     }
   };

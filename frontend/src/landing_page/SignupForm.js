@@ -11,6 +11,7 @@ function SignupForm() {
   });
   const [message, setMessage] = useState("");
   const [showPassword, setShowPassword] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -44,16 +45,23 @@ function SignupForm() {
   
   const handleSubmit = async (e) => {
   e.preventDefault();
+  setMessage("");
+  setLoading(true);
   try {
-    const { data } = await axios.post(`${API_URL}/signup`, inputValue);
+    const baseUrl = (API_URL || "").replace(/\/$/, "");
+    const { data } = await axios.post(`${baseUrl}/login`, inputValue);
 
-    if (data.success) {
-      window.location.href = `${DASHBOARD_URL}/?token=${data.token}`;
+    if (data.success && data.token) {
+      const dashUrl = (DASHBOARD_URL || "").replace(/\/$/, "");
+      window.location.href = `${dashUrl}/?token=${data.token}`;
     } else {
-      setMessage(data.message);
+      setMessage(data.message || "Something went wrong. Please try again.");
+      setLoading(false);
     }
   } catch (error) {
-    setMessage("Something went wrong. Please try again.");
+    console.error("Auth error:", error);
+    setMessage("Server did not respond. Please wait a moment and try again.");
+    setLoading(false);
   }
 };
 
