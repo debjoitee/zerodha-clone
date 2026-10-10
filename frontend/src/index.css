@@ -12,26 +12,52 @@ code {
     monospace;
 }
 
-.nav-link{
-  margin-left: 40px ;
-}
-
-
-
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
-
-html,
-body {
-  overflow-x: hidden;
-  width: 100%;
-}
-
+/* কোনো ছবি তার বাক্স ছাড়িয়ে বের হবে না */
 img {
   max-width: 100%;
   height: auto;
-  display: block;
+}
+
+/* Navbar লিংকের ফাঁক শুধু বড় screen-এ (আগে mobile-এও ৪০px ছিল, তাই ভাঙত) */
+.nav-link {
+  margin-left: 0;
+}
+@media (min-width: 992px) {
+  .nav-link {
+    margin-left: 40px;
+  }
+}
+
+/* ===== MOBILE (768px বা ছোট) ===== */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 1.8rem;
+  }
+  h2 {
+    font-size: 1.5rem;
+  }
+
+  /* Hero-র "Sign up for free" বাটনে inline width: 20% ছিল */
+  .btn.fs-5 {
+    width: 80% !important;
+  }
+
+  /* বড় padding ছোট করো */
+  .p-5 {
+    padding: 1rem !important;
+  }
+  .px-5 {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+
+  /* চওড়া table পাশে স্ক্রল হবে, পুরো পেজ ভাঙবে না */
+  table {
+    display: block;
+    overflow-x: auto;
+  }
+  td,
+  th {
+    min-width: 110px;
+  }
 }

@@ -4,6 +4,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./index.css";
 import Home from "./components/Home";
 import AuthGuard from "./components/AuthGuard";
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 
 // URL থেকে টোকেন চেক করে LocalStorage-এ সংরক্ষণ
 const queryParams = new URLSearchParams(window.location.search);
